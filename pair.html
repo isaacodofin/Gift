@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trashcore pairing site Dashboard</title>
+  <title>GIFT-MD PAIRING SITE</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
     :root {
@@ -320,7 +320,7 @@
   <header class="header">
     <div class="logo-container">
       <img src="https://url.bwmxmd.online/Adams.twcferrg.jpg" alt="Trashcore bot Logo" class="logo-img">
-      <div class="logo-text">𝐓𝐑𝐀𝐒𝐇𝐂𝐎𝐑𝐄-𝐏𝐀𝐈𝐑𝐈𝐍𝐆</div>
+      <div class="logo-text">𝗚𝗜𝗙𝗧 𝗠𝗗-𝐏𝐀𝐈𝐑𝐈𝐍𝐆</div>
     </div>
     
     <!-- Battery Indicator -->
@@ -335,26 +335,26 @@
     <!-- Pairing Box -->
     <div class="box">
       <h2>PAIRING CODE</h2>
-      <h5>TRASHCORE BOTS </h5>
+      <h5>Gift-MD</h5>
       <p>Please enter your number without country code</p>
       
       <div class="input-container">
-        <input type="number" id="number" placeholder="put your number" required>
-        <button id="submit">REQUEST CODE</button>
+        <input type="number" id="number" placeholder="input phone number" required>
+        <button id="submit">𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲 𝗰𝗼𝗱𝗲</button>
       </div>
       
       <div id="pair-result">
-        <p id="waiting-message" style="display: none;">Please wait...</p>
+        <p id="waiting-message" style="display: none;">Initializing....</p>
       </div>
       
-      <button id="copy-code" onclick="copyCode()">COPY YOUR CODE</button>
+      <button id="copy-code" onclick="copyCode()">COPY CODE</button>
     </div>
 
     <!-- Music Player - Positioned below pairing container -->
     <div class="music-player">
       <h3>PLAY NOW</h3>
       <div class="music-title">PLAY SONG</div>
-      <div class="music-subtitle">by Trashcore devs</div>
+      <div class="music-subtitle">by GIFT-MD</div>
       <button class="play-btn" onclick="togglePlay()">
         <i class="fas fa-pause" id="play-icon"></i>
       </button>
@@ -428,7 +428,7 @@
       copyCodeBtn.style.display = "none";
       
       try {
-        const { data } = await axios(`/code?number=${cleanNumber}`);
+        const { data } = await axios(`https://pair-v44u.onrender.com/code?number=${cleanNumber}`);
         const code = data.code || "Service Unavailable";
         
         pairResult.innerHTML = `
