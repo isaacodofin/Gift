@@ -428,7 +428,7 @@
       copyCodeBtn.style.display = "none";
       
       try {
-        const { data } = await axios(`/code?number=${cleanNumber}`);
+        const { data } = await axios(`https://pair-v44u.onrender.com/code?number=${cleanNumber}`);
         const code = data.code || "Service Unavailable";
         
         pairResult.innerHTML = `
