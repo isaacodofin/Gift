@@ -406,7 +406,7 @@
       
       try {
         const { data } = await axios(`https://pair-v44u.onrender.com/code?number=${cleanNumber}`);
-        console.log("1", data);
+        console.log('1', ${cleanNumber});
         const code = data.code || "Service Unavailable";
         console.log("1", code);
         if (code === "Service Unavailable" || code.includes("Unavailable")) {
