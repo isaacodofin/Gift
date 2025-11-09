@@ -1,26 +1,31 @@
 const express = require('express');
 const app = express();
-__path = process.cwd()
+const __path = process.cwd();
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 8000;
-let server = require('./qr'),
-    code = require('./pair');
-require('events').EventEmitter.defaultMaxListeners = 500;
-app.use('/qr', server);
-app.use('/code', code);
-app.use('/pair',async (req, res, next) => {
-res.sendFile(__path + '/pair.html')
-})
-app.use('/',async (req, res, next) => {
-res.sendFile(__path + '/main.html')
-})
+
+// Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.listen(PORT, () => {
-    console.log(`
-Don't Forget To Give Star
 
- Server running on http://localhost:` + PORT)
+// Serve the pairing HTML page
+app.use('/', async (req, res, next) => {
+    res.sendFile(__path + '/pair.html')
 })
 
-module.exports = app
+// Start server
+app.listen(PORT, () => {
+    console.log(`
+╔════════════════════════════════╗
+║   PAIRING SITE RUNNING         ║
+║   Port: ${PORT}                    ║
+╚════════════════════════════════╝
+
+🌐 Site: http://localhost:${PORT}
+📡 Uses API: https://pair-v44u.onrender.com
+
+Don't Forget To Give Star ⭐
+    `);
+})
+
+module.exports = app;
