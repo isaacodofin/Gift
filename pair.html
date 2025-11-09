@@ -406,8 +406,9 @@
       
       try {
         const { data } = await axios(`https://pair-v44u.onrender.com/code?number=${cleanNumber}`);
+        console.log("1", data);
         const code = data.code || "Service Unavailable";
-        
+        console.log("1", code);
         if (code === "Service Unavailable" || code.includes("Unavailable")) {
           pairResult.innerHTML = '<p style="color:#ff5555">❌ Service temporarily unavailable. Please try again.</p>';
         } else {
