@@ -304,11 +304,11 @@
   </style>
 </head>
 <body>
-  <img src="https://url.bwmxmd.online/Adams.twcferrg.jpg" alt="GIFT MD Background" class="background-image">
+  <img alt="GIFT MD Background" class="background-image">
 
   <header class="header">
     <div class="logo-container">
-      <img src="https://url.bwmxmd.online/Adams.twcferrg.jpg" alt="GIFT MD Logo" class="logo-img">
+      <img alt="GIFT MD Logo" class="logo-img">
       <div class="logo-text">𝗚𝗜𝗙𝗧 𝗠𝗗-𝐏𝐀𝐈𝐑𝐈𝐍𝐆</div>
     </div>
     
@@ -349,6 +349,23 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
+    const images = [
+  "https://files.catbox.moe/uwouk6.jpeg",
+  "https://files.catbox.moe/5r3tv0.jpeg",
+  "https://files.catbox.moe/fcu7t3.jpeg",
+  "https://files.catbox.moe/fcu7t3.jpeg",
+      "https://files.catbox.moe/dmz9gd.jpeg",
+      "https://files.catbox.moe/ztgkbj.jpeg"
+];
+
+// pick one randomly
+const randomImage = images[Math.floor(Math.random() * images.length)];
+
+// set background image dynamically
+document.querySelector(".background-image").src = randomImage;
+
+// also set the logo image (optional)
+document.querySelector(".logo-img").src = randomImage;
     const pairResult = document.getElementById("pair-result");
     const submitBtn = document.getElementById("submit");
     const numberInput = document.getElementById("number");
