@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trashcore pairing site Dashboard</title>
+  <title>GIFT-MD PAIRING SITE</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
     :root {
@@ -34,10 +34,9 @@
       position: relative;
       overflow-x: hidden;
       color: var(--text);
-      padding: 80px 20px 120px; /* Space for header and music player */
+      padding: 80px 20px 120px;
     }
 
-    /* Background with blur effect */
     .background-image {
       position: fixed;
       top: 0;
@@ -50,7 +49,6 @@
       transform: scale(1.1);
     }
 
-    /* Header with logo */
     .header {
       position: fixed;
       top: 0;
@@ -90,7 +88,6 @@
       text-shadow: var(--glow);
     }
 
-    /* Battery indicator */
     .battery-container {
       background: rgba(0, 0, 0, 0.3);
       border-radius: 50px;
@@ -107,7 +104,6 @@
       font-size: 1.2rem;
     }
 
-    /* Main container */
     .main-content {
       width: 100%;
       max-width: 500px;
@@ -118,7 +114,6 @@
       z-index: 1;
     }
 
-    /* Pairing box */
     .box {
       background: var(--glass);
       backdrop-filter: blur(var(--blur));
@@ -150,7 +145,6 @@
       font-weight: normal;
     }
 
-    /* Input styling */
     .input-container {
       display: flex;
       gap: 0.5rem;
@@ -190,7 +184,6 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
-    /* Result display */
     #pair-result {
       margin-top: 1.5rem;
       padding: 1rem;
@@ -221,7 +214,6 @@
       box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
     }
 
-    /* Music player - Positioned below pairing container */
     .music-player {
       width: 100%;
       max-width: 500px;
@@ -284,7 +276,6 @@
       color: var(--muted);
     }
 
-    /* Responsive design */
     @media (max-width: 768px) {
       .header {
         padding: 0.8rem 1rem;
@@ -313,74 +304,63 @@
   </style>
 </head>
 <body>
-  <!-- Blurred Background Image -->
-  <img src="https://url.bwmxmd.online/Adams.twcferrg.jpg" alt="Trashcore bot Background" class="background-image">
+  <img src="https://url.bwmxmd.online/Adams.twcferrg.jpg" alt="GIFT MD Background" class="background-image">
 
-  <!-- Header with Logo -->
   <header class="header">
     <div class="logo-container">
-      <img src="https://url.bwmxmd.online/Adams.twcferrg.jpg" alt="Trashcore bot Logo" class="logo-img">
-      <div class="logo-text">𝐓𝐑𝐀𝐒𝐇𝐂𝐎𝐑𝐄-𝐏𝐀𝐈𝐑𝐈𝐍𝐆</div>
+      <img src="https://url.bwmxmd.online/Adams.twcferrg.jpg" alt="GIFT MD Logo" class="logo-img">
+      <div class="logo-text">𝗚𝗜𝗙𝗧 𝗠𝗗-𝐏𝐀𝐈𝐑𝐈𝐍𝐆</div>
     </div>
     
-    <!-- Battery Indicator -->
     <div class="battery-container">
       <i class="fas fa-battery-full battery-icon" id="battery-icon"></i>
       <span id="battery-level">--%</span>
     </div>
   </header>
 
-  <!-- Main Content Container -->
   <div class="main-content">
-    <!-- Pairing Box -->
     <div class="box">
       <h2>PAIRING CODE</h2>
-      <h5>TRASHCORE BOTS </h5>
+      <h5>Gift-MD</h5>
       <p>Please enter your number without country code</p>
       
       <div class="input-container">
-        <input type="number" id="number" placeholder="put your number" required>
-        <button id="submit">REQUEST CODE</button>
+        <input type="number" id="number" placeholder="input phone number" required>
+        <button id="submit">𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲 𝗰𝗼𝗱𝗲</button>
       </div>
       
-      <div id="pair-result">
-        <p id="waiting-message" style="display: none;">Please wait...</p>
-      </div>
+      <div id="pair-result"></div>
       
-      <button id="copy-code" onclick="copyCode()">COPY YOUR CODE</button>
+      <button id="copy-code" onclick="copyCode()">COPY CODE</button>
     </div>
 
-    <!-- Music Player - Positioned below pairing container -->
     <div class="music-player">
       <h3>PLAY NOW</h3>
       <div class="music-title">PLAY SONG</div>
-      <div class="music-subtitle">by Trashcore devs</div>
+      <div class="music-subtitle">by GIFT-MD</div>
       <button class="play-btn" onclick="togglePlay()">
         <i class="fas fa-pause" id="play-icon"></i>
       </button>
       <div class="time-display" id="time1">0:00</div>
       <div class="music-subtitle">PAIRING SONG</div>
-      <audio id="audio1" src="https://url.bwmxmd.online/Adams.ioeeyulj.m4a" loop></audio>
+      <audio id="audio1" src="https://files.catbox.moe/f8hh1z.mp3" loop></audio>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
-    // DOM elements
     const pairResult = document.getElementById("pair-result");
     const submitBtn = document.getElementById("submit");
     const numberInput = document.getElementById("number");
     const copyCodeBtn = document.getElementById("copy-code");
-    const waitingMessage = document.getElementById("waiting-message");
     const batteryLevel = document.getElementById("battery-level");
     const batteryIcon = document.getElementById("battery-icon");
 
-    // Copy code function
     async function copyCode() {
       const code = pairResult.innerText.replace('CODE: ', '');
       try {
         await navigator.clipboard.writeText(code);
-        copyCodeBtn.innerText = "COPIED!";
+        copyCodeBtn.innerText = "✅ COPIED!";
         copyCodeBtn.style.backgroundColor = "#00ff00";
         copyCodeBtn.style.color = "#000";
         setTimeout(() => {
@@ -389,27 +369,25 @@
           copyCodeBtn.style.color = "";
         }, 2000);
       } catch (err) {
-        console.error('Failed to copy: ', err);
+        console.error('Failed to copy:', err);
       }
     }
 
-    // Submit handler
     submitBtn.addEventListener("click", async (e) => {
       e.preventDefault();
       
       if (!numberInput.value) {
-        pairResult.innerHTML = '<p style="color:var(--highlight)">Enter your WhatsApp number without Country Code</p>';
+        pairResult.innerHTML = '<p style="color:var(--highlight)">⚠️ Enter your WhatsApp number without Country Code</p>';
         return;
       }
       
       const cleanNumber = numberInput.value.replace(/[^0-9]/g, "");
       
-      if (cleanNumber.length < 11) {
-        pairResult.innerHTML = '<p style="color:#ff5555">Invalid Number</p>';
+      if (cleanNumber.length < 10) {
+        pairResult.innerHTML = '<p style="color:#ff5555">❌ Invalid Number (minimum 10 digits)</p>';
         return;
       }
       
-      // Format number display
       let formattedNumber = "";
       const digits = cleanNumber.split('');
       digits.forEach((digit, index) => {
@@ -423,34 +401,34 @@
       numberInput.value = "+" + formattedNumber;
       numberInput.style.color = "var(--highlight)";
       
-      waitingMessage.style.display = "block";
-      pairResult.innerHTML = "";
+      pairResult.innerHTML = '<p style="color:var(--highlight);">⏳ Generating pairing code...</p>';
       copyCodeBtn.style.display = "none";
       
       try {
         const { data } = await axios(`https://pair-v44u.onrender.com/code?number=${cleanNumber}`);
         const code = data.code || "Service Unavailable";
         
-        pairResult.innerHTML = `
-          <p style="color:var(--highlight); font-weight:bold; font-size:1.2rem;">
-            CODE: <span style="color:white">${code}</span>
-          </p>
-        `;
-        copyCodeBtn.style.display = "inline-block";
-        waitingMessage.style.display = "none";
+        if (code === "Service Unavailable" || code.includes("Unavailable")) {
+          pairResult.innerHTML = '<p style="color:#ff5555">❌ Service temporarily unavailable. Please try again.</p>';
+        } else {
+          pairResult.innerHTML = `
+            <p style="color:var(--highlight); font-weight:bold; font-size:1.2rem;">
+              CODE: <span style="color:white">${code}</span>
+            </p>
+          `;
+          copyCodeBtn.style.display = "inline-block";
+        }
       } catch (error) {
-        pairResult.innerHTML = '<p style="color:#ff5555">Error getting pairing code</p>';
-        waitingMessage.style.display = "none";
+        console.error('API Error:', error);
+        pairResult.innerHTML = '<p style="color:#ff5555">❌ Error getting pairing code. Please try again.</p>';
       }
     });
 
-    // Music player controls
     const audio = document.getElementById('audio1');
     const playBtn = document.querySelector('.play-btn');
     const playIcon = document.getElementById('play-icon');
     const timeDisplay = document.getElementById('time1');
     
-    // Auto-play music when page loads (with user interaction)
     document.addEventListener('click', function initAudio() {
       audio.play().then(() => {
         playIcon.classList.replace('fa-play', 'fa-pause');
@@ -483,7 +461,6 @@
 
     audio.addEventListener('timeupdate', updateTimeDisplay);
 
-    // Battery status indicator
     async function updateBattery() {
       if (navigator.getBattery) {
         try {
@@ -493,14 +470,12 @@
             const batteryPercent = Math.round(battery.level * 100);
             batteryLevel.textContent = `${batteryPercent}%`;
             
-            // Update battery icon based on level
             let iconClass = 'fa-battery-empty';
             if (batteryPercent > 80) iconClass = 'fa-battery-full';
             else if (batteryPercent > 60) iconClass = 'fa-battery-three-quarters';
             else if (batteryPercent > 40) iconClass = 'fa-battery-half';
             else if (batteryPercent > 20) iconClass = 'fa-battery-quarter';
             
-            // Add charging bolt if charging
             if (battery.charging) {
               batteryIcon.className = `fas fa-bolt ${iconClass}`;
               batteryIcon.style.color = '#00ff00';
@@ -515,18 +490,17 @@
           updateBatteryUI();
         } catch (error) {
           console.error('Battery API error:', error);
+          batteryLevel.textContent = "N/A";
         }
       } else {
         batteryLevel.textContent = "N/A";
       }
     }
 
-    // Initialize
     window.addEventListener('load', () => {
       copyCodeBtn.style.display = "none";
       updateBattery();
       
-      // Smooth page load
       document.body.style.opacity = '0';
       setTimeout(() => {
         document.body.style.transition = 'opacity 0.5s ease';
