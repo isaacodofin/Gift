@@ -347,9 +347,7 @@
       <audio id="audio1" src="https://files.catbox.moe/f8hh1z.mp3" loop></audio>
     </div>
   </div>
-
-        
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
 <script>
   const pairResult = document.getElementById("pair-result");
   const submitBtn = document.getElementById("submit");
@@ -359,7 +357,6 @@
   const batteryIcon = document.getElementById("battery-icon");
 
   async function copyCode() {
-    // ✅ ENHANCED: Extract code properly from the result
     const codeText = pairResult.innerText.match(/\b[A-Z0-9]{6,8}\b/);
     const code = codeText ? codeText[0] : pairResult.innerText.replace(/[^A-Z0-9]/g, '');
     
@@ -374,7 +371,6 @@
         copyCodeBtn.style.color = "";
       }, 2000);
     } catch (err) {
-      console.error('Failed to copy:', err);
       alert('Code: ' + code);
     }
   }
@@ -382,7 +378,6 @@
   submitBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     
-    // ✅ Clear previous results
     pairResult.innerHTML = '';
     copyCodeBtn.style.display = "none";
     
@@ -413,8 +408,6 @@
     
     pairResult.innerHTML = '<p style="color:var(--highlight);">⏳ Generating pairing code...<br><small style="color:var(--muted);">Please wait up to 60 seconds</small></p>';
     
-    console.log('🔍 Requesting code for:', cleanNumber);
-    
     try {
       const apiUrl = `https://pair-v44u.onrender.com/code?number=${cleanNumber}`;
       
@@ -426,12 +419,9 @@
         }
       });
       
-      console.log('🔍 Response:', response.data);
-      
       const data = response.data;
       let code = null;
       
-      // ✅ Handle different response formats
       if (typeof data === 'string') {
         code = data;
       } else if (data && data.code) {
@@ -440,67 +430,63 @@
         code = data.pairingCode;
       }
       
-      console.log('🔍 Extracted Code:', code);
-      
-      // ✅ Validate code
       if (!code || code === "Service Unavailable" || code.includes("Unavailable") || code.includes("required") || code.includes("error")) {
-        pairResult.innerHTML = '<p style="color:#ff5555; font-weight:bold;">❌ Service temporarily unavailable.<br><small style="color:var(--muted);">Please try again in a moment.</small></p>';
+        pairResult.innerHTML = '<p style="color:#ff5555; font-weight:bold;">❌ Service temporarily unavailable.<br><small style="color:var(--muted);">Please try again.</small></p>';
         return;
       }
       
-      // ✅ SUCCESS - Display code with instructions
+      // ✅ SUCCESS - FIXED VERSION WITH ALIGNED LAYERS
       pairResult.innerHTML = `
         <div style="animation: fadeIn 0.5s;">
-          <p style="color:#00ff00; font-weight:bold; font-size:2.5rem; text-shadow: 0 0 25px #00ff00; letter-spacing: 10px; margin: 1.5rem 0; font-family: 'Courier New', monospace;">
+          <p style="color:#00ff00; font-weight:bold; font-size:1.8rem; text-shadow: 0 0 20px #00ff00; letter-spacing: 8px; margin: 1rem 0; font-family: 'Courier New', monospace;">
             ${code}
           </p>
-          <p style="color:white; font-size:1.1rem; margin:1rem 0; font-weight:600;">
+          <p style="color:white; font-size:1rem; margin:0.8rem 0; font-weight:600;">
             ✅ Pairing Code Generated Successfully!
           </p>
           
-          <!-- ✅ STEP-BY-STEP INSTRUCTIONS -->
-          <div style="background: rgba(0, 0, 0, 0.4); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; text-align: left; border: 1px solid rgba(0, 212, 255, 0.2);">
+          <div style="background: rgba(0, 0, 0, 0.4); border-radius: var(--radius); padding: 1.5rem; margin-top: 1rem; text-align: left; border: 1px solid rgba(0, 212, 255, 0.2);">
             <p style="color:#00d4ff; font-size:1rem; font-weight:bold; margin-bottom:1rem; text-align:center;">
               📱 HOW TO LINK YOUR WHATSAPP
             </p>
             
-            <div style="color:white; font-size:0.95rem; line-height: 2; padding: 0 0.5rem;">
-              <p style="margin-bottom:0.8rem;">
+            <div style="color:white; font-size:0.9rem; line-height: 1.8; padding: 0;">
+              <p style="margin-bottom:0.7rem;">
                 <span style="background: linear-gradient(135deg, #FF4500, #228B22); padding: 2px 8px; border-radius: 4px; font-weight: bold;">1</span>
                 <span style="margin-left:0.5rem;">Open <b>WhatsApp</b> on your phone</span>
               </p>
               
-              <p style="margin-bottom:0.8rem;">
+              <p style="margin-bottom:0.7rem;">
                 <span style="background: linear-gradient(135deg, #FF4500, #228B22); padding: 2px 8px; border-radius: 4px; font-weight: bold;">2</span>
                 <span style="margin-left:0.5rem;">Tap the <b>3 dots</b> (⋮) at top right</span>
               </p>
               
-              <p style="margin-bottom:0.8rem;">
+              <p style="margin-bottom:0.7rem;">
                 <span style="background: linear-gradient(135deg, #FF4500, #228B22); padding: 2px 8px; border-radius: 4px; font-weight: bold;">3</span>
                 <span style="margin-left:0.5rem;">Select <b>"Linked Devices"</b></span>
               </p>
               
-              <p style="margin-bottom:0.8rem;">
+              <p style="margin-bottom:0.7rem;">
                 <span style="background: linear-gradient(135deg, #FF4500, #228B22); padding: 2px 8px; border-radius: 4px; font-weight: bold;">4</span>
                 <span style="margin-left:0.5rem;">Tap <b>"Link a Device"</b></span>
               </p>
               
-              <p style="margin-bottom:0.8rem;">
+              <p style="margin-bottom:0.7rem;">
                 <span style="background: linear-gradient(135deg, #FF4500, #228B22); padding: 2px 8px; border-radius: 4px; font-weight: bold;">5</span>
                 <span style="margin-left:0.5rem;">Tap <b>"Link with phone number instead"</b></span>
               </p>
               
-              <p style="margin-bottom:0rem;">
+              <p style="margin-bottom:0.5rem;">
                 <span style="background: linear-gradient(135deg, #FF4500, #228B22); padding: 2px 8px; border-radius: 4px; font-weight: bold;">6</span>
                 <span style="margin-left:0.5rem;">Enter this code:</span>
               </p>
               
-              <p style="text-align:center; margin: 1rem 0; font-size:1.8rem; color:#00ff00; font-weight:bold; letter-spacing: 8px; text-shadow: 0 0 15px #00ff00; font-family: 'Courier New', monospace;">
+              <p style="text-align:center; margin: 1rem 0; font-size:1.8rem; color:#00ff00; font-weight:bold; letter-spacing: 8px; text-shadow: 0 0 20px #00ff00; font-family: 'Courier New', monospace;">
                 ${code}
               </p>
             </div>
             
-            <p style="color:#ff6b6b; font-size:0.85rem; margin-top:1rem; text-align:center; font-weight:500;">
+            <p style="color:#ff6b6b; font-size:0.85rem; margin-top:1rem; padding-top:1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align:center; font-weight:500;">
               ⏱️ <b>Important:</b> Code expires in 60 seconds!
             </p>
           </div>
@@ -509,33 +495,29 @@
       
       copyCodeBtn.style.display = "inline-block";
       
-      /* ✅ Auto-copy to clipboard
       try {
         await navigator.clipboard.writeText(code);
-        console.log('✅ Code auto-copied to clipboard');
         setTimeout(() => {
           const existingContent = pairResult.innerHTML;
-          pairResult.innerHTML = existingContent + '<p style="color:#90EE90; font-size:0.85rem; margin-top:1rem; font-weight:500;">📋 Code automatically copied to clipboard!</p>';
+          pairResult.innerHTML = existingContent + '<p style="color:#90EE90; font-size:0.85rem; margin-top:1rem; font-weight:500;">📋 Code copied to clipboard!</p>';
         }, 800);
       } catch (clipErr) {
-        console.log('⚠️ Auto-copy failed:', clipErr);
-      }*/
+        // Silent fail
+      }
       
     } catch (error) {
-      console.error('❌ ERROR:', error);
-      
       let errorMsg = '❌ Error getting pairing code.';
       let debugInfo = '';
       
       if (error.code === 'ECONNABORTED') {
         errorMsg = '❌ Request timeout';
-        debugInfo = 'The service is waking up. Please try again in 10 seconds.';
+        debugInfo = 'Please try again in 10 seconds.';
       } else if (error.response) {
-        errorMsg = `❌ Server Error (${error.response.status})`;
-        debugInfo = error.response.data?.code || 'Service temporarily unavailable.';
+        errorMsg = `❌ Server Error`;
+        debugInfo = 'Service temporarily unavailable.';
       } else if (error.request) {
-        errorMsg = '❌ Cannot reach the pairing service';
-        debugInfo = 'Please check your internet connection.';
+        errorMsg = '❌ Cannot reach service';
+        debugInfo = 'Check your internet connection.';
       } else {
         debugInfo = error.message;
       }
@@ -557,7 +539,7 @@
       playIcon.classList.replace('fa-play', 'fa-pause');
       updateTimeDisplay();
     }).catch(error => {
-      console.log('Auto-play prevented:', error);
+      // Silent fail
     });
     document.removeEventListener('click', initAudio);
   }, { once: true });
@@ -612,7 +594,6 @@
         battery.addEventListener('chargingchange', updateBatteryUI);
         updateBatteryUI();
       } catch (error) {
-        console.error('Battery API error:', error);
         batteryLevel.textContent = "N/A";
       }
     } else {
@@ -632,7 +613,6 @@
   });
 </script>
 
-<!-- ✅ ADD FADE-IN ANIMATION -->
 <style>
   @keyframes fadeIn {
     from { 
