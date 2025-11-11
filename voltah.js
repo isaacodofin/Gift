@@ -22,7 +22,8 @@ app.listen(PORT, () => {
 ╚════════════════════════════════╝
 
 🌐 Site: http://localhost:${PORT}
-📡 Uses API: https://pair-v44u.onrender.com
+📡 Uses API: https://pair-v44u.onrender.com/code?number=;
+
 
 Don't Forget To Give Star ⭐
     `);
