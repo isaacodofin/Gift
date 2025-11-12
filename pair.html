@@ -495,7 +495,7 @@
       
       copyCodeBtn.style.display = "inline-block";
       
-      try {
+     /* try {
         await navigator.clipboard.writeText(code);
         setTimeout(() => {
           const existingContent = pairResult.innerHTML;
@@ -503,7 +503,7 @@
         }, 800);
       } catch (clipErr) {
         // Silent fail
-      }
+      }*/
       
     } catch (error) {
       let errorMsg = '❌ Error getting pairing code.';
