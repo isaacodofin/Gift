@@ -186,14 +186,34 @@
 
     #pair-result {
   margin-top: 1.5rem;
-  padding: 0;  /* ✅ CHANGED: Remove padding here */
-  border-radius: var(--radius);  /* ✅ KEEP: This applies to the container */
+  padding: 0;
+  border-radius: var(--radius);
   background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(0, 212, 255, 0.6);  /* ✅ CHANGED: Thicker cyan border */
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4), 
+              0 0 40px rgba(0, 212, 255, 0.2),
+              inset 0 0 20px rgba(0, 212, 255, 0.1);  /* ✅ ADDED: Glowing effect */
   min-height: 60px;
-  display: block;  /* ✅ CHANGED: From flex to block */
-  overflow: hidden;  /* ✅ ADDED: Ensures rounded corners work */
-    }
+  display: block;
+  overflow: visible;
+  animation: borderGlow 3s ease-in-out infinite;  /* ✅ ADDED: Pulse animation */
+}
+
+/* ✅ ADDED: Glowing pulse animation */
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(0, 212, 255, 0.6);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4), 
+                0 0 40px rgba(0, 212, 255, 0.2),
+                inset 0 0 20px rgba(0, 212, 255, 0.1);
+  }
+  50% {
+    border-color: rgba(0, 212, 255, 0.9);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.6), 
+                0 0 60px rgba(0, 212, 255, 0.3),
+                inset 0 0 30px rgba(0, 212, 255, 0.15);
+  }
+}
 
     #copy-code {
       background: rgba(0, 0, 0, 0.3);
